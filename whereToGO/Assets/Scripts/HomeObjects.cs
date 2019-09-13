@@ -54,6 +54,7 @@ public class HomeObjects : MonoBehaviour
             gameObject.tag = "dead";
             collision.gameObject.tag = "dead";
         }
+
     }
     void DeathMangager()
     {
