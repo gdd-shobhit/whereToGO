@@ -1052,7 +1052,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1479494835856364, guid: 7d53b2a40ca830044a27aba623ee0c7f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4521056073084984, guid: 7d53b2a40ca830044a27aba623ee0c7f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2178,6 +2178,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Saw
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072438957935114754, guid: 750a78583253ba946af45f230d48a1c4,
+        type: 3}
+      propertyPath: m_TagString
+      value: deathObject
       objectReference: {fileID: 0}
     - target: {fileID: 6072438957935114752, guid: 750a78583253ba946af45f230d48a1c4,
         type: 3}

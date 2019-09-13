@@ -19,12 +19,14 @@ public class playerMovement : MonoBehaviour
     private Vector2 clampedVel;
     public ParticleSystem skull;
     public ParticleSystem deathBlood;
+    private bool fireStance;
     //public int localExtraJumps;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         extraJumps = extraJumpValue;
+        fireStance = false;
         //skull=gameObject.GetComponentInChildren<ParticleSystem>();
         //skull.enableEmission = false;
     }
@@ -36,7 +38,16 @@ public class playerMovement : MonoBehaviour
         //clampedVel = Vector2.ClampMagnitude(rb.velocity, -0.2f);
         //rb.velocity = clampedVel;
         rb.AddForce(new Vector2(movement * speed*25, rb.velocity.y), ForceMode2D.Force);
-        
+
+        // checking for fire stance
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            FireStance();
+        }
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            gameObject.transform.GetChild(2).gameObject.SetActive(false);
+        }
         //rb.transform.position = rb.transform.position+new Vector3(movement * speed * Time.deltaTime, rb.velocity.y, 0);
         DeathMangager();
         
@@ -99,6 +110,14 @@ public class playerMovement : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.gameObject.tag = "dead";
+        //if (collision.tag == "deathObjectf")
+        //{
+        //    collision.gameObject.tag = "dead";
+        //}      
+    }
+
+    void FireStance()
+    {
+        gameObject.transform.GetChild(2).gameObject.SetActive(true);
     }
 }

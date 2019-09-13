@@ -10,6 +10,7 @@ TagManager:
   - paddle
   - enemy
   - wall
+  - deathObject
   layers:
   - Default
   - TransparentFX
