@@ -13,6 +13,7 @@ public class enemySpawner : MonoBehaviour
     {
         enemyPrefab.GetComponent<HomeObjects>().targetTransform = player;
     }
+
     void Update()
     {
         //Debug.Log(Time.timeSinceLevelLoad);
@@ -25,8 +26,15 @@ public class enemySpawner : MonoBehaviour
             Instantiate(enemyPrefab, placeToSpawnFrom.position, Quaternion.Inverse(Quaternion.identity));
             spawner = false;
             //enemyPrefab.gameObject.GetComponent("Home Objects").GetComponent
+        
 
         }
+
+        /*
+         * 
+         * 
+         * 
+         * */
         
     }
 }
