@@ -34,12 +34,12 @@ public class PowerUpsManager : MonoBehaviour
         if (firePower.activeSelf)
         {
             Debug.Log("activeSelf working");
-            //PickUp(firePower);
+            PickUp(firePower);
         }
 
         if (frostyPower.activeSelf)
         {
-            //PickUp(frostyPower);
+            PickUp(frostyPower);
         }
     }
 
