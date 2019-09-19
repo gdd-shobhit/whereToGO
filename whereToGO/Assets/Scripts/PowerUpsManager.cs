@@ -18,15 +18,15 @@ public class PowerUpsManager : MonoBehaviour
     void Update()
     {
         
-        //if (Time.timeSinceLevelLoad % 5 == 0 && firePower.activeSelf == false)
-        //{
-        //    firePower.SetActive(true);
-        //}
+        if (Time.timeSinceLevelLoad % 5 == 0 && firePower.activeSelf == false)
+        {
+            firePower.SetActive(true);
+        }
 
-        //if (Time.timeSinceLevelLoad % 5 == 0 && frostyPower.activeSelf == false)
-        //{
-        //    frostyPower.SetActive(true);
-        //}
+        if (Time.timeSinceLevelLoad % 5 == 0 && frostyPower.activeSelf == false)
+        {
+            frostyPower.SetActive(true);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
