@@ -6,6 +6,7 @@ public class PowerUpsManager : MonoBehaviour
 {
     public GameObject firePower;
     public GameObject frostyPower;
+    public GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +46,14 @@ public class PowerUpsManager : MonoBehaviour
 
     void PickUp(GameObject power)
     {
-        power.SetActive(false);
 
+        StartCoroutine(RespawningPowerInSeconds(power, 5));
+
+    }
+
+    IEnumerator RespawningPowerInSeconds(GameObject power,float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        power.SetActive(false);
     }
 }
