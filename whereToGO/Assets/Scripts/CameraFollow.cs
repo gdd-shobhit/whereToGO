@@ -7,8 +7,13 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 smoothPosition = Vector3.Lerp(transform.position, target.position, smoothness);
-        transform.position = new Vector3(smoothPosition.x,smoothPosition.y);
+        if (target != null)
+        {
+            Vector3 smoothPosition = Vector3.Lerp(transform.position, target.position, smoothness);
+            transform.position = new Vector3(smoothPosition.x, smoothPosition.y);
+
+        }
+       
         
     }
 }

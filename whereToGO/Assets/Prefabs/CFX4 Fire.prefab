@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 99137475555844360}
   - component: {fileID: 99137475570000974}
   - component: {fileID: 99137475569966574}
-  - component: {fileID: 99137475555425577}
   - component: {fileID: 99137475555425578}
   m_Layer: 0
   m_Name: CFX4 Fire
@@ -4598,27 +4597,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!50 &99137475555425577
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 99137475555425576}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &99137475555425578
 BoxCollider2D:
   m_ObjectHideFlags: 0

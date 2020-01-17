@@ -13,6 +13,19 @@ public class PickUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
+    }
+
+    IEnumerator PickUpRoutine()
+    {
+        yield return new WaitForSeconds(1);
+        gameObject.SetActive(true);
+        StopCoroutine(PickUpRoutine());
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        StartCoroutine(PickUpRoutine());
+        gameObject.SetActive(false);
     }
 }

@@ -8,31 +8,29 @@ public class enemySpawner : MonoBehaviour
     public Transform placeToSpawnFrom;
     public Transform player;
     public bool spawner=false;
+    public float timer;
     // Update is called once per frame
     private void Start()
     {
+        timer = 0;
         enemyPrefab.GetComponent<HomeObjects>().targetTransform = player;
     }
 
     void Update()
     {
+        timer += Time.deltaTime;
         //Debug.Log(Time.timeSinceLevelLoad);
-        if((int)Time.timeSinceLevelLoad % 5 == 0)
+        if(timer>5)
         {
             spawner = true;
+            timer = 0;
         }
-        if ((int)Time.timeSinceLevelLoad % 4 == 0 && spawner == true)
+        if (spawner == true)
         {
             Instantiate(enemyPrefab, placeToSpawnFrom.position, Quaternion.Inverse(Quaternion.identity));
             spawner = false;
             //enemyPrefab.gameObject.GetComponent("Home Objects").GetComponent
         }
-
-        /* 
-         * 
-         * 
-         * 
-         * */
         
     }
 }

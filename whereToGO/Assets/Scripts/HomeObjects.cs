@@ -13,6 +13,7 @@ public class HomeObjects : MonoBehaviour
     public ParticleSystem ps;
     public float speed = 5f;
     public bool isRight = true;
+    public float timer = 0;
 
     public float rotateSpeed =200f;
     // Start is called before the first frame update
@@ -24,12 +25,15 @@ public class HomeObjects : MonoBehaviour
     }
     private void Update()
     {
+        timer += Time.deltaTime;
         DeathMangager();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (targetTransform != null)
+        {
 
         Vector2 direction = (Vector2)targetTransform.position - rb.position;
 
@@ -40,9 +44,12 @@ public class HomeObjects : MonoBehaviour
         rb.angularVelocity = -rotateAmount * rotateSpeed;
 
         rb.velocity = transform.up * speed;
-        if ((int)Time.timeSinceLevelLoad % 10 == 0)
+
+        }
+        if (timer>10)
         {
             gameObject.tag = "dead";
+            timer = 0;
         }
 
     }
