@@ -602,6 +602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d127e924db5db94b94fc9b6861f01f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effect: {fileID: 0}
 --- !u!61 &581644625
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -704,6 +705,7 @@ MonoBehaviour:
   placeToSpawnFrom: {fileID: 1883127035}
   player: {fileID: 514131208}
   spawner: 0
+  timer: 0
 --- !u!4 &1145106951
 Transform:
   m_ObjectHideFlags: 0
@@ -1019,7 +1021,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePower: {fileID: 37159359710375376}
   frostyPower: {fileID: 581644623}
-  gameManager: {fileID: 0}
 --- !u!4 &1535478804
 Transform:
   m_ObjectHideFlags: 0
@@ -1552,6 +1553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d127e924db5db94b94fc9b6861f01f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effect: {fileID: 0}
 --- !u!1001 &136288038030856440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2001,8 +2003,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Icon
       value: 
-      objectReference: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000,
-        type: 0}
+      objectReference: {fileID: 0}
     - target: {fileID: 4051285049438225348, guid: 11ac420ede408714ba63d3c37d3e38f0,
         type: 3}
       propertyPath: m_TagString
@@ -2375,8 +2376,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Icon
       value: 
-      objectReference: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000,
-        type: 0}
+      objectReference: {fileID: 0}
     - target: {fileID: 6872095446696547238, guid: 6834f2501148fd64983679d8f704d369,
         type: 3}
       propertyPath: m_LocalPosition.x

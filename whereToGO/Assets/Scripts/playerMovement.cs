@@ -27,8 +27,6 @@ public class playerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         extraJumps = extraJumpValue;
         fireStance = false;
-        //skull=gameObject.GetComponentInChildren<ParticleSystem>();
-        //skull.enableEmission = false;
     }
 
     void FixedUpdate()
@@ -71,8 +69,6 @@ public class playerMovement : MonoBehaviour
         if (isGrounded == true || isWalled==true )
         {
             extraJumps = extraJumpValue;
-           
-            //skull.emission = true;
             
         }        
         if(Input.GetKeyDown(KeyCode.W) && extraJumps > 0)
@@ -80,11 +76,9 @@ public class playerMovement : MonoBehaviour
             //rb.velocity = transform.up * jumpForce * Time.deltaTime;
             rb.AddForce(new Vector2(0, jumpForce*100f), ForceMode2D.Force);
             extraJumps--;
-            //skull.Play();
         }
         else if(Input.GetKeyDown(KeyCode.W) && extraJumps == 0 && (isGrounded == true || isWalled==true))
         {
-            //rb.velocity = transform.up * jumpForce * Time.deltaTime;
             rb.AddForce(new Vector2(0, jumpForce * 100f), ForceMode2D.Force);
             //skull.Play();
         }

@@ -6,7 +6,6 @@ public class PowerUpsManager : MonoBehaviour
 {
     public GameObject firePower;
     public GameObject frostyPower;
-    public GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -19,15 +18,6 @@ public class PowerUpsManager : MonoBehaviour
     void Update()
     {
         
-        if (Time.timeSinceLevelLoad % 5 == 0 && firePower.activeSelf == false)
-        {
-            firePower.SetActive(true);
-        }
-
-        if (Time.timeSinceLevelLoad % 5 == 0 && frostyPower.activeSelf == false)
-        {
-            frostyPower.SetActive(true);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

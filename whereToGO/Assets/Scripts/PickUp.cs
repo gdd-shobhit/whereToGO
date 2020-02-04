@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
+    public ParticleSystem effect;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +24,13 @@ public class PickUp : MonoBehaviour
         StopCoroutine(PickUpRoutine());
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        StartCoroutine(PickUpRoutine());
-        gameObject.SetActive(false);
+        Debug.Log("in there");
+        if (other.tag == "alive")
+        {
+            Instantiate(effect, transform.position, transform.rotation);
+        }
     }
 }
