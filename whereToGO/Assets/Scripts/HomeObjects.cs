@@ -58,10 +58,10 @@ public class HomeObjects : MonoBehaviour
     {
         if (collision.gameObject.tag == "alive")
         {
+            if (!collision.gameObject.transform.GetChild(2).gameObject.activeSelf)
+                collision.gameObject.tag = "dead";
             gameObject.tag = "dead";
-            collision.gameObject.tag = "dead";
         }
-
     }
     void DeathMangager()
     {

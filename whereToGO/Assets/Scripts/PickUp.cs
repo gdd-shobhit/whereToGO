@@ -5,32 +5,27 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     public ParticleSystem effect;
-    // Start is called before the first frame update
-    void Start()
+
+    IEnumerator PickupRoutine(float time)
     {
-        
+        ParticleSystem ps = gameObject.GetComponent<ParticleSystem>();
+        BoxCollider2D collider = gameObject.GetComponent<BoxCollider2D>();
+        ps.Stop();
+        collider.enabled = false;
+        yield return new WaitForSeconds(time);
+        ps.Play();
+        collider.enabled = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-       
-    }
-
-    IEnumerator PickUpRoutine()
-    {
-        yield return new WaitForSeconds(1);
-        gameObject.SetActive(true);
-        StopCoroutine(PickUpRoutine());
-    }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("in there");
-        if (other.tag == "alive")
+        if (collision.tag == "alive")
         {
-            Instantiate(effect, transform.position, transform.rotation);
+            StartCoroutine(PickupRoutine(2));
+            Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+            collision.GetComponent<playerMovement>().fireStance = true;
         }
+        
+
     }
 }

@@ -1,9 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
     public GameObject grapplePrefab;
     private GameObject grapple;
+    private LineRenderer grappleLine;
+    public Material m_Line;
     private float GRAPPLE_DISTANCE = 4.0f;
     private Vector3 grappleDestination;
 
@@ -26,12 +30,16 @@ public class playerMovement : MonoBehaviour
     private Vector2 clampedVel;
     public ParticleSystem skull;
     public ParticleSystem deathBlood;
-    private bool fireStance;
+    public bool fireStance;
     //public int localExtraJumps;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        grappleLine = gameObject.AddComponent<LineRenderer>();
+        grappleLine.material = m_Line;
+        grappleLine.startWidth = 0.20f;
+        grappleLine.enabled = false;
         grapple = Instantiate(grapplePrefab, transform.position, Quaternion.identity);
         grapple.SetActive(false);
         jumps = extraJumpValue;
@@ -50,7 +58,7 @@ public class playerMovement : MonoBehaviour
             ShootGrapple();
         }
         FireStance();
-        //DeathMangager();
+        DeathMangager();
 
     }
 
@@ -74,10 +82,9 @@ public class playerMovement : MonoBehaviour
             if (hit.rigidbody.gameObject.tag != "alive") isGrounded = hit.distance < 0.01f;
 
         if (isGrounded || isWalled) jumps = extraJumpValue;
-        Debug.Log(hit.distance);
+        
         if (Input.GetKeyDown(KeyCode.W) && jumps > 0)
         {
-            Debug.Log(jumps);
             rb.AddForce(new Vector2(0, jumpForce * 100f), ForceMode2D.Force);
             jumps--;
         }
@@ -102,21 +109,24 @@ public class playerMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //if (collision.tag == "deathObjectf")
-        //{
-        //    collision.gameObject.tag = "dead";
-        //}      
-    }
-
     void FireStance()
     {
-        // checking for fire stance
-        if (Input.GetKeyDown(KeyCode.F)) 
-            gameObject.transform.GetChild(2).gameObject.SetActive(true);
-        if (Input.GetKeyUp(KeyCode.F))
-            gameObject.transform.GetChild(2).gameObject.SetActive(false);
+        if (fireStance)
+        {
+            // checking for fire stance
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                gameObject.transform.GetChild(2).gameObject.SetActive(true);
+                StartCoroutine(FirePower(3, gameObject.transform.GetChild(2).gameObject));
+            }              
+        }   
+    }
+
+    IEnumerator FirePower(float time, GameObject fireObject)
+    {       
+        yield return new WaitForSeconds(time);
+        fireObject.SetActive(false);
+        fireStance = false;      
     }
 
     //Initialize the grapple
@@ -134,6 +144,9 @@ public class playerMovement : MonoBehaviour
             isGrappling = true;
             rb.gravityScale = 0;
             rb.velocity *= 0.1f;
+            grappleLine.enabled = true;
+            grappleLine.SetPosition(0, transform.position);
+            grappleLine.SetPosition(1, transform.position);
         }
     }
 
@@ -143,6 +156,7 @@ public class playerMovement : MonoBehaviour
         if (!grappleHit)
         {
             grapple.transform.position = Vector3.Lerp(grapple.transform.position, grappleDestination, 0.1f);
+            grappleLine.SetPosition(1, grapple.transform.position);
             RaycastHit2D hit = Physics2D.Raycast(grapple.transform.position, grappleDestination, 0.05f);
             if (hit)
                 if (hit.rigidbody.gameObject.tag != "alive")
@@ -153,6 +167,7 @@ public class playerMovement : MonoBehaviour
         else
         {
             transform.position = Vector3.Lerp(transform.position, grappleDestination, 0.1f);
+            grappleLine.SetPosition(0, transform.position);
             if (Vector2.Distance(grapple.transform.position, transform.position) < 0.2f)
                 EndGrapple();
         }
@@ -162,6 +177,7 @@ public class playerMovement : MonoBehaviour
     {
         isGrappling = false;
         grappleHit = false;
+        grappleLine.enabled = false;
         grapple.SetActive(false);
         rb.gravityScale = 1;
     }

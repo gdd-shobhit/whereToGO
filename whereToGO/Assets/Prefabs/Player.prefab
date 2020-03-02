@@ -177,6 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grapplePrefab: {fileID: 622582743247340254, guid: 290738ac1cea1404c957cc5f16ea32b9,
     type: 3}
+  m_Line: {fileID: 2100000, guid: 670cca87a17844341847b2dfd83304c8, type: 2}
   rb: {fileID: 1139044118855113786}
   speed: 2
   extraJumpValue: 1
@@ -195,6 +196,7 @@ MonoBehaviour:
   vel: {x: 0, y: 0}
   skull: {fileID: 19800004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
   deathBlood: {fileID: 19800000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
+  fireStance: 0
 --- !u!95 &1139044118855113790
 Animator:
   serializedVersion: 3
