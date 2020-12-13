@@ -6,6 +6,7 @@ public class sawRotator : MonoBehaviour
 {
     public GameObject player;
     public BoxCollider2D boxCollider;
+    private float timeMultiplier = 1.0f;
     // Update is called once per frame
     void FixedUpdate()
     {

@@ -14,7 +14,7 @@ public class HomeObjects : MonoBehaviour
     public float speed = 5f;
     public bool isRight = true;
     public float timer = 0;
-
+    private float timeMultiplier = 1.0f;
     public float rotateSpeed =200f;
     // Start is called before the first frame update
     
@@ -25,6 +25,10 @@ public class HomeObjects : MonoBehaviour
     }
     private void Update()
     {
+        if (targetTransform.gameObject.GetComponent<playerMovement>().frostStance)
+        {
+            timeMultiplier *= 0.2f;
+        }
         timer += Time.deltaTime;
         DeathMangager();
     }
@@ -43,7 +47,7 @@ public class HomeObjects : MonoBehaviour
 
         rb.angularVelocity = -rotateAmount * rotateSpeed;
 
-        rb.velocity = transform.up * speed;
+        rb.velocity = transform.up * speed * timeMultiplier;
 
         }
         if (timer>10)

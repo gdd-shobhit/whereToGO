@@ -31,6 +31,7 @@ public class playerMovement : MonoBehaviour
     public ParticleSystem skull;
     public ParticleSystem deathBlood;
     public bool fireStance;
+    public bool frostStance;
     //public int localExtraJumps;
     // Start is called before the first frame update
     void Start()
@@ -44,6 +45,7 @@ public class playerMovement : MonoBehaviour
         grapple.SetActive(false);
         jumps = extraJumpValue;
         fireStance = false;
+        frostStance = false;
     }
 
     void FixedUpdate()
@@ -142,8 +144,8 @@ public class playerMovement : MonoBehaviour
             grapple.transform.position = transform.position;
             grapple.SetActive(true);
             isGrappling = true;
-            rb.gravityScale = 0;
-            rb.velocity *= 0.1f;
+            rb.gravityScale = 0.2f;
+            rb.velocity *= 0.2f;
             grappleLine.enabled = true;
             grappleLine.SetPosition(0, transform.position);
             grappleLine.SetPosition(1, transform.position);

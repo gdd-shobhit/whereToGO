@@ -23,9 +23,13 @@ public class PickUp : MonoBehaviour
         {
             StartCoroutine(PickupRoutine(2));
             Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+            if(gameObject.tag == "frost")
+            {
+                collision.GetComponent<playerMovement>().frostStance = true;
+                return;
+            }
             collision.GetComponent<playerMovement>().fireStance = true;
         }
         
-
     }
 }
