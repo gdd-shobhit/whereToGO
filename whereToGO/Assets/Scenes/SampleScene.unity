@@ -1670,6 +1670,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3463461127927643107, guid: cffde289149d3db43992aaee016d4505,
+        type: 3}
+      propertyPath: m_TagString
+      value: frost
+      objectReference: {fileID: 0}
     - target: {fileID: 3463461127928129475, guid: cffde289149d3db43992aaee016d4505,
         type: 3}
       propertyPath: m_LocalPosition.x

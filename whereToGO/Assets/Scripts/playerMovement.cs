@@ -60,6 +60,7 @@ public class playerMovement : MonoBehaviour
             ShootGrapple();
         }
         FireStance();
+        FrostStance();
         DeathMangager();
 
     }
@@ -122,6 +123,14 @@ public class playerMovement : MonoBehaviour
                 StartCoroutine(FirePower(3, gameObject.transform.GetChild(2).gameObject));
             }              
         }   
+    }
+
+    void FrostStance()
+    {
+        if (frostStance)
+        {
+
+        }
     }
 
     IEnumerator FirePower(float time, GameObject fireObject)
